@@ -22,7 +22,9 @@ func main() {
 		// in your case file would be fileupload
 		file, header, err := r.FormFile("file")
 		if err != nil {
-			panic(err)
+			log.Println(err)
+			w.Write([]byte(err.Error()))
+			return
 		}
 		defer file.Close()
 		name := strings.Split(header.Filename, ".")
