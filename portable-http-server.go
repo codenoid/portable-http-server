@@ -13,7 +13,7 @@ import (
 func main() {
 
 	var port string
-	flag.StringVar(&port, "port", "3000", "-p <wanted-port>")
+	flag.StringVar(&port, "port", "3000", "-port <wanted-port>")
 	flag.Parse()
 
 	http.HandleFunc("/upload", func(w http.ResponseWriter, r *http.Request) {
