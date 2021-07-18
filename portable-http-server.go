@@ -17,7 +17,7 @@ func main() {
 	flag.Parse()
 
 	http.HandleFunc("/upload", func(w http.ResponseWriter, r *http.Request) {
-		r.ParseMultipartForm(32 << 20) // limit your max input length!
+		defer r.MultipartForm.RemoveAll()
 
 		// in your case file would be fileupload
 		file, header, err := r.FormFile("file")
